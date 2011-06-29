@@ -1,12 +1,12 @@
-#! /usr/bin/perl -w
+#! /usr/bin/perl
 #
 # Randomize ardour track
 #
-# Usage: randardour [ardour session file] [amount of randomization] [track name]
+# Usage: randtrack.pl [ardour session file] [amount of randomization] [track name]
 
 use strict;
+use warnings;
 use XML::Simple;
-use Data::Dumper;
 
 sub is_integer { $_[0] =~ /^[+-]?\d+$/ }
 
