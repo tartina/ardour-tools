@@ -11,19 +11,18 @@ use XML::LibXML;
 sub is_integer { $_[0] =~ /^[+-]?\d+$/ }
 
 my $session_file = $ARGV[0];
-my $randomization = $ARGV[1];
-my $track = $ARGV[2];
+my $outfile = $ARGV[1];
+my $randomization = $ARGV[2];
+my $track = $ARGV[3];
 my $session;
 my $region;
-my $outfile;
 my $value;
 my $temp;
 my $rand;
 my $root;
 my @nodelist;
 
-if (defined($session_file) && defined($randomization) && defined($track)) {
-	$outfile = $session_file . ".new";
+if (defined($session_file) && defined($outfile) && defined($randomization) && defined($track)) {
 	if (is_integer($randomization)) {
 
     $session = XML::LibXML->load_xml(location => $session_file);
