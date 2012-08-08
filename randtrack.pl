@@ -14,10 +14,8 @@ my $session_file = $ARGV[0];
 my $randomization = $ARGV[1];
 my $track = $ARGV[2];
 my $session;
-my $playlist;
 my $region;
 my $outfile;
-my $key;
 my $value;
 my $temp;
 my $rand;
@@ -27,29 +25,33 @@ my @nodelist;
 if (defined($session_file) && defined($randomization) && defined($track)) {
 	$outfile = $session_file . ".new";
 	if (is_integer($randomization)) {
-	
+
     $session = XML::LibXML->load_xml(location => $session_file);
     $root = $session->documentElement();
+
     $value = $root->nodeName;
     if ($value ne "Session") { die "This is not an Ardour session"; }
     $value = $root->getAttribute("version");
     if ($value ne "2.0.0") { die "This is not an Ardour session"; }
 
     @nodelist = $root->findnodes("/Session/DiskStreams/AudioDiskstream[\@name='$track']");
-    
-    $value = $nodelist[0]->getAttribute("playlist");
 
-    @nodelist = $root->findnodes("/Session/Playlists/Playlist[\@name='$value']/Region");
+    if (@nodelist) {
+      $value = $nodelist[0]->getAttribute("playlist");
+      @nodelist = $root->findnodes("/Session/Playlists/Playlist[\@name='$value']/Region");
 
-    foreach $region (@nodelist) {
-	    $rand = int(rand($randomization)) - ($randomization / 2);
-      $value = $region->getAttribute("position");
-	    $temp = $value + $rand;
-	    if ($temp < 0) {$temp = 0};
-	    $region->setAttribute("position", $temp);
+      foreach $region (@nodelist) {
+	      $rand = int(rand($randomization) - ($randomization / 2));
+        $value = $region->getAttribute("position");
+	      $temp = $value + $rand;
+	      if ($temp < 0) {$temp = 0};
+	      $region->setAttribute("position", $temp);
+      }
+
+      $session->toFile($outfile);
+    } else {
+      print "Track not found\n";
     }
-    
-    $session->toFile($outfile);
 	}
 } else {
 	print "Too few parameters\n";
