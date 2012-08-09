@@ -1,8 +1,8 @@
 #! /usr/bin/perl
 #
-# Randomize ardour track
+# Randomize ardour tracks
 #
-# Usage: randtrack [ardour session file] [amount of randomization] [track name]
+# Usage: randtrack [ardour session file] [output file] [amount of randomization] [track name]...
 
 use strict;
 use warnings;
@@ -30,7 +30,7 @@ if ($numargs > 3) {
   $outfile = $ARGV[1];
   $randomization = $ARGV[2];
 } else {
-  die "Too few parameters\n";
+  die "Usage: randtrack [ardour session file] [output file] [amount of randomization] [track name]...\n";
 }
 
 if (defined($session_file) && defined($outfile) && defined($randomization)) {
@@ -67,5 +67,5 @@ if (defined($session_file) && defined($outfile) && defined($randomization)) {
     $session->toFile($outfile);
 	}
 } else {
-	print "Too few parameters\n";
+	print "Usage: randtrack [ardour session file] [output file] [amount of randomization] [track name]...\n";
 }
