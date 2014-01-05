@@ -63,6 +63,7 @@ if (defined($session_file) && defined($outfile) && defined($gain)) {
       if (@nodelist) {
         $value = $nodelist[0]->firstChild->nodeValue;
 				@event = split /^/, $value;
+				$newvalue='';
 				foreach $value (@event) {
 					@automation = split / /, $value;
 					$newautomation = $automation[1] * $scale;
@@ -70,7 +71,6 @@ if (defined($session_file) && defined($outfile) && defined($gain)) {
 					$newvalue .= sprintf("%u %.16f\n", $automation[0], $newautomation);
 				}
 				$nodelist[0]->firstChild->replaceNode(XML::LibXML::Text->new( $newvalue ));
-				$newvalue='';
       } else {
         print "Track $track or automation not found\n";
       }
