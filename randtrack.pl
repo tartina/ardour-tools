@@ -42,7 +42,7 @@ if (defined($session_file) && defined($outfile) && defined($randomization)) {
     $value = $root->nodeName;
     if ($value ne "Session") { die "This is not an Ardour session"; }
     $value = $root->getAttribute("version");
-    if ($value ne "2.0.0") { die "This is not an Ardour session"; }
+    if ($value ne "2.0.0") { die "This Ardour session version is not supported"; }
 
     for ($i = 3; $i < $numargs; $i++) {
       $track = $ARGV[$i];
