@@ -42,11 +42,11 @@ if (defined($session_file) && defined($outfile) && defined($randomization)) {
     $value = $root->nodeName;
     if ($value ne "Session") { die "This is not an Ardour session"; }
     $value = $root->getAttribute("version");
-    if ($value ne "2.0.0") { die "This Ardour session version is not supported"; }
+    if ($value ne "3001") { die "This Ardour session version is not supported"; }
 
     for ($i = 3; $i < $numargs; $i++) {
       $track = $ARGV[$i];
-      @nodelist = $root->findnodes("/Session/DiskStreams/AudioDiskstream[\@name='$track']");
+      @nodelist = $root->findnodes("/Session/Routes/Route[\@name='$track']/Diskstream");
 
       if (@nodelist) {
         $value = $nodelist[0]->getAttribute("playlist");
