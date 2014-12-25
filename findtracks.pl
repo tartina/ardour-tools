@@ -41,7 +41,7 @@ if ( defined($session_file) ) {
     foreach $track (@nodelist) {
         $value = $track->getAttribute("name");
         print($value);
-        print("\n");
+        print(" ");
     }
 }
 else {
