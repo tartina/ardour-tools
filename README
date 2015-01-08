@@ -1,0 +1,41 @@
+These are some useful PERL script for Ardour sessions.
+
+They work on session version 3001.
+
+They all use library XML-LibXML, which is the
+Perl Binding for libxml2, you can download it
+from CPAN.
+
+On Fedora you can install the package perl-XML-LibXML.
+
+findtracks.pl lists all the tracks in an Ardour session.
+
+randtracks adds (in the relative way) an amount to the
+start of all the regions in the active playlist of a
+set of tracks. It's useful if you want to humanize a
+drum track made of single shots.
+
+scaleautomation adds (in the relative way) an amount in dB
+to tracks which contain automation data. It doesn't work
+on tracks with fixed level.
+
+These scripts act on Ardour session files, so
+MAKE BACKUPS before using it.
+
+--------------------------------------------------------------------
+
+ardour-tools: useful scripts for Ardour sessions
+Copyright (C) 2014 Guido Aulisi <guido.aulisi@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
