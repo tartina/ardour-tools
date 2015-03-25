@@ -44,5 +44,5 @@ if ( defined($session_file) ) {
     }
 }
 else {
-    print "Usage: findtracks [ardour session file]\n";
+    print "Usage: showtracks [ardour session file] [track]\n";
 }
