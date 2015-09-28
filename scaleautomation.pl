@@ -86,22 +86,27 @@ if ( defined($session_file) && defined($outfile) && defined($gain) ) {
                     XML::LibXML::Text->new($newvalue) );
             }
             else {
-								# Didn't find automation data, check for static value
-                print "Track $track automation not found, trying static value\n";
-								@gain_control_list =
-									$root->findnodes("/Session/Routes/Route[\@name='$track']/Processor[\@type='amp']/Controllable[\@name='gaincontrol']");
-								if (@gain_control_list) {
-	                $newvalue = '';
-									$value = $gain_control_list[0]->getAttribute("value");
-									$newvalue = $value * $scale;
-                  if ( $newvalue > 2 ) {
-                      die "Clipping occurred, not saving file";
-                  }
-									$gain_control_list[0]->setAttribute("value", $newvalue);
-								} else {
-									# Didn't find static value
-									die "Track $track static value not found, not saving file\n";
-								}
+                # Didn't find automation data, check for static value
+                print
+                  "Track $track automation not found, trying static value\n";
+                @gain_control_list =
+                  $root->findnodes(
+"/Session/Routes/Route[\@name='$track']/Processor[\@type='amp']/Controllable[\@name='gaincontrol']"
+                  );
+                if (@gain_control_list) {
+                    $newvalue = '';
+                    $value    = $gain_control_list[0]->getAttribute("value");
+                    $newvalue = $value * $scale;
+                    if ( $newvalue > 2 ) {
+                        die "Clipping occurred, not saving file";
+                    }
+                    $gain_control_list[0]->setAttribute( "value", $newvalue );
+                }
+                else {
+                    # Didn't find static value
+                    die
+                      "Track $track static value not found, not saving file\n";
+                }
             }
         }
         $session->toFile($outfile);
