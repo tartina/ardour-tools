@@ -20,7 +20,7 @@ to tracks which contain automation data. It now works also
 on tracks with fixed level.
 
 These scripts act on Ardour session files, so
-MAKE BACKUPS before using it.
+MAKE BACKUPS before using them.
 
 --------------------------------------------------------------------
 
