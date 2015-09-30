@@ -1,4 +1,4 @@
-These are some useful PERL script for Ardour sessions.
+These are some useful PERL scripts for Ardour sessions.
 
 They work on session version 3001.
 
@@ -9,6 +9,8 @@ from CPAN.
 On Fedora you can install the package perl-XML-LibXML.
 
 findtracks.pl lists all the tracks in an Ardour session.
+
+showtrack.pl shows the XML node of a track (Route).
 
 randtracks adds (in the relative way) an amount to the
 start of all the regions in the active playlist of a
