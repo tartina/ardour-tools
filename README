@@ -16,7 +16,7 @@ set of tracks. It's useful if you want to humanize a
 drum track made of single shots.
 
 scaleautomation adds (in the relative way) an amount in dB
-to tracks which contain automation data. It doesn't work
+to tracks which contain automation data. It now works also
 on tracks with fixed level.
 
 These scripts act on Ardour session files, so
