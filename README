@@ -15,7 +15,8 @@ showtrack.pl shows the XML node of a track (Route).
 randtracks adds (in the relative way) an amount to the
 start of all the regions in the active playlist of a
 set of tracks. It's useful if you want to humanize a
-drum track made of single shots.
+drum track made of single shots. Amount of randomization
+is the max offset in samples.
 
 scaleautomation adds (in the relative way) an amount in dB
 to tracks which contain automation data. It now works also

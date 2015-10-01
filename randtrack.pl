@@ -3,6 +3,8 @@
 # Randomize ardour tracks
 #
 # Usage: randtrack.pl [ardour session file] [output file] [amount of randomization] [track name]...
+#
+# [amount of randomization] is the max offset in samples.
 
 use strict;
 use warnings;
@@ -77,5 +79,5 @@ if ( defined($session_file) && defined($outfile) && defined($randomization) ) {
 }
 else {
     print
-"Usage: randtrack [ardour session file] [output file] [amount of randomization] [track name]...\n";
+"Usage: randtrack [ardour session file] [output file] [amount of randomization (samples)] [track name]...\n";
 }
