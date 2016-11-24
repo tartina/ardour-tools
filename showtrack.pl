@@ -33,7 +33,7 @@ if ( defined($session_file) ) {
     $value = $root->nodeName;
     if ( $value ne "Session" ) { die "This is not an Ardour session"; }
     $value = $root->getAttribute("version");
-    if ( $value ne "3001" ) {
+    if ( $value ne "3001" && $value ne "3002" ) {
         die "This Ardour session version is not supported";
     }
 
