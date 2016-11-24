@@ -1,6 +1,6 @@
 These are some useful PERL scripts for Ardour sessions.
 
-They work on session version 3001.
+They work on session versions 3001 and 3002.
 
 They all use library XML-LibXML, which is the
 Perl Binding for libxml2, you can download it
